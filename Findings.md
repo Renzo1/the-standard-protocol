@@ -1,6 +1,6 @@
 
 # FINDINGs
-
+> H: 24 | M: 6 | L: 7
 
 ## [H-#] Incorrect Accounting in `LiquidationPool::distributeAssets()` Causes Permanent Loss of Holders' EUROs Position
 
