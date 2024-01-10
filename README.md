@@ -1,4 +1,4 @@
-# the-standard-protocol
+# The Standard Protocol Security Review
 This repository contains my audit notes and findings from The Standard Protocol CodeHawk contest. None of the original code has been change, just commented on.
 
 The original repository can be found at:
