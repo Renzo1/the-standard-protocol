@@ -1,5 +1,7 @@
 
-# [M-#] Excessive deployment of Vault contracts adds to the degradation of the blockchain network.
+# FINDINGs
+
+## [M-#] Excessive deployment of Vault contracts adds to the degradation of the blockchain network.
 
 
 https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/SmartVaultManagerV5.sol#L86-L87
@@ -21,7 +23,6 @@ Every liquidated vault adds trash data to its host blockchain network, which hik
 **Recommended Mitigation Steps:**
 
 Consider alternative design choices for the vault contracts the don't resort to dumping useless data on the blockchain, and doesn't threaten the security of the network.
-# SUBMISSIONS
 
 ## [H-#] Incorrect Accounting in `LiquidationPool::distributeAssets()` Causes Permanent Loss of Holders' EUROs Position
 
