@@ -7,7 +7,7 @@ The original repository can be found at:
 https://github.com/Cyfrin/2023-12-the-standard
 ```
 
-My test suite are in the following repository:
+My test suite is in the following repository:
 
 ```
 https://github.com/Renzo1/the-standard-protocol
