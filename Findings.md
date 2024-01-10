@@ -1,28 +1,6 @@
 
 # FINDINGs
 
-## [M-#] Excessive deployment of Vault contracts adds to the degradation of the blockchain network.
-
-
-https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/SmartVaultManagerV5.sol#L86-L87
-
-
-**Description:**
-
-When a vault is liquidated, the `SmartVaultManagerV5` revokes the vaults right to burn and mint EURO, effectively rendering it useless. Their MINTER_ROLE() and BURNER_ROLE() roles for EUROs are revoked, and not granted back, even if the vaults are recredited. This is the equivalent of rejecting a user from a lending protocol like GMX after if they have been liquidated in the past, even if they return with a healthy position -- but worse. This is wasteful, gas inefficient, and net negative for the entire blockchain network, as it adds garbage data to the blockchain network. i.e. bloating the network. It is our duty as developers and security researcher to ensure the sanctity of the blockchain network and it's maintainance if we want to guarantee its sustainability.
-
-
-**Impact:**
-
-Every liquidated vault adds trash data to its host blockchain network, which hikes the block space demand and consequently cost.
-
-
-**Tools Used:**
-- Manual review
-
-**Recommended Mitigation Steps:**
-
-Consider alternative design choices for the vault contracts the don't resort to dumping useless data on the blockchain, and doesn't threaten the security of the network.
 
 ## [H-#] Incorrect Accounting in `LiquidationPool::distributeAssets()` Causes Permanent Loss of Holders' EUROs Position
 
@@ -846,6 +824,28 @@ function initialize() initializer public {
 +    IEUROs(euros).grantRole(IEUROs(euros).BURNER_ROLE(), address(LiquidationPool));
 }
 ```
+## [M-#] Excessive deployment of Vault contracts adds to the degradation of the blockchain network.
+
+
+https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/SmartVaultManagerV5.sol#L86-L87
+
+
+**Description:**
+
+When a vault is liquidated, the `SmartVaultManagerV5` revokes the vaults right to burn and mint EURO, effectively rendering it useless. Their MINTER_ROLE() and BURNER_ROLE() roles for EUROs are revoked, and not granted back, even if the vaults are recredited. This is the equivalent of rejecting a user from a lending protocol like GMX after if they have been liquidated in the past, even if they return with a healthy position -- but worse. This is wasteful, gas inefficient, and net negative for the entire blockchain network, as it adds garbage data to the blockchain network. i.e. bloating the network. It is our duty as developers and security researcher to ensure the sanctity of the blockchain network and it's maintainance if we want to guarantee its sustainability.
+
+
+**Impact:**
+
+Every liquidated vault adds trash data to its host blockchain network, which hikes the block space demand and consequently cost.
+
+
+**Tools Used:**
+- Manual review
+
+**Recommended Mitigation Steps:**
+
+Consider alternative design choices for the vault contracts the don't resort to dumping useless data on the blockchain, and doesn't threaten the security of the network.
 
 ## [M-#] Pricision Error in `distributeAssets()` Could Lead to Undercollateralization of EUROs
 
