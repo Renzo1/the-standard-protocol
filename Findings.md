@@ -567,7 +567,7 @@ function testAccountErrorLoss10e() public {
 ```
 
 
-## [H-1] `Stake()` Not Accounting for Some EUROs in the Pool Decreases the Efficiency of the Pool
+## [H-#] `Stake()` Not Accounting for Some EUROs in the Pool Decreases the Efficiency of the Pool
 
 **GitHub Link:** [LiquidationPool.sol - Lines 44-46](https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/LiquidationPool.sol#L44-L46)
 
@@ -593,7 +593,7 @@ Only factor EUROs positions in the `stake()` calculation.
     }
 
 
-## [H-1] High Capital Inefficiency in the Liquidity Pool could lead to undercollateralization
+## [H-#] High Capital Inefficiency in the Liquidity Pool could lead to undercollateralization
 
 **GitHub Link:** [LiquidationPool.sol - Lines 44-46](https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/LiquidationPool.sol#L44-L46)
 
@@ -704,7 +704,7 @@ Reward stakers according to the effective value added to the pool. Effective val
 
 
 
-## [H-1] Potential Denial of Service (DoS) Attack in `runLiquidation()` Function Prevent Vault Liquidation
+## [H-#] Potential Denial of Service (DoS) Attack in `runLiquidation()` Function Prevent Vault Liquidation
 
 https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/LiquidationPool.sol#L119-L133
 
@@ -741,7 +741,7 @@ Inability to liquidate vaults as intended may lead to undercollateralization of 
 **Recommended Mitigation Steps:**
 To address this issue, a thorough examination of the contract architecture is required. Consider exploring gas-efficient alternatives, such as using mappings instead of arrays.
 
-## [H-1] Missing BURNER_ROLE for EURO in `LiquidationPool` Causes `distributeAssets()` to revert
+## [H-#] Missing BURNER_ROLE for EURO in `LiquidationPool` Causes `distributeAssets()` to revert
 
 https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/LiquidationPool.sol#L239C20-L239C20
 
@@ -1037,7 +1037,7 @@ function testLiquidatorCantLiquidateVault() public {
 **Recommended Mitigation Steps:**
 To address this issue, a thorough examination of the contract architecture is required. Consider exploring gas-efficient alternatives, such as using mappings instead of arrays.
 
-## [H - 1] `addUniqueHolder()` Looping Through `holders` Array for Stakers' Positions Poses a Potential Denial of Service (DoS) Attack
+## [H-#] `addUniqueHolder()` Looping Through `holders` Array for Stakers' Positions Poses a Potential Denial of Service (DoS) Attack
 
 
 https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/LiquidationPool.sol#L141
@@ -1164,7 +1164,7 @@ The provided test suite demonstrates the vulnerability's validity and severity.
 Consider alternative design structures that are more gas-efficient. For example, explore the use of mappings instead of arrays or incorporate the [EnumerableMap library](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/structs/EnumerableMap.sol) by OpenZeppelin.
 
 
-## [H - 1] `deleteHolder()` Looping Through `holders` Array for Stakers' Positions Poses a Potential Denial of Service (DoS) Attack
+## [H-#] `deleteHolder()` Looping Through `holders` Array for Stakers' Positions Poses a Potential Denial of Service (DoS) Attack
 
 https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/LiquidationPool.sol#L161
 
@@ -1342,7 +1342,7 @@ Two alternative solutions are available, each with its trade-offs between higher
 
 2. Set the contract's allowance on users' accounts to a sufficiently large value the first time they use the platform. This way, users won't need to repeat the approval process every time they interact with the protocol.
 
-# [H-1] Insufficient EUROs in LiquidationPool to Buy Liquidated Assets Could Lead to Under-collateralization of EUROs
+# [H-#] Insufficient EUROs in LiquidationPool to Buy Liquidated Assets Could Lead to Under-collateralization of EUROs
 
 https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/LiquidationPool.sol#L240
 
@@ -1462,7 +1462,7 @@ Allow users to set their slippage tolerance but ensure their position can be cov
 
 
 
-## [H-1] Misdirection of Liquidated Assets Causes Undercollateralization of EUROs
+## [H-#] Misdirection of Liquidated Assets Causes Undercollateralization of EUROs
 
 https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/SmartVaultManagerV5.sol#L22
 
@@ -1599,7 +1599,7 @@ Transfer fees to `liquidator` instead of `protocol`.
     }
 ```
 
-## \[H-1\] Misdirection of Mint fees to `protocol` Address Instead of `liquidator` Causes Loss of Rewards for Stakers
+## \[H-#\] Misdirection of Mint fees to `protocol` Address Instead of `liquidator` Causes Loss of Rewards for Stakers
 
 https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/SmartVaultManagerV5.sol#L22
 
@@ -2093,7 +2093,7 @@ function executeERC20SwapAndFee(ISwapRouter.ExactInputSingleParams memory _param
 
 ```
 
-## [H-1] Misdirection of Native Swap fees to `protocol` Address Instead of `liquidator` Causes Loss of Rewards for Stakers
+## [H-#] Misdirection of Native Swap fees to `protocol` Address Instead of `liquidator` Causes Loss of Rewards for Stakers
 
 https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/SmartVaultV3.sol#L190-L195
 
@@ -2203,7 +2203,7 @@ This could lead to internal accounting errors.
 Consider ordering multiplication before division.
 
 
-## [H-1] Unchecked Transfer in forwardRemainingRewards() Could Cause Loss for the Protocol
+## [H-#] Unchecked Transfer in forwardRemainingRewards() Could Cause Loss for the Protocol
 
 https://github.com/Cyfrin/2023-12-the-standard/blob/91132936cb09ef9bf82f38ab1106346e2ad60f91/contracts/LiquidationPoolManager.sol#L54
 
